@@ -74,7 +74,7 @@ const Cart = () => {
           )}
         </div>
         <div className="flex-grow flex justify-between items-end mt-5">
-          <div className="text-gray-600">${product.price}</div>
+          <div className="text-green-600">${product.price}</div>
           <span
             className="cursor-pointer text-red-600"
             onClick={() => removeFromCart(product.id)}

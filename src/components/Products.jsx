@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../store/cartSlice";
 import { fetchProducts } from "../store/productSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -40,7 +42,7 @@ const Products = () => {
           className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 mb-4 flex"
           key={product.id}
         >
-          <div className="bg-white rounded-lg shadow-md p-4 flex flex-col h-full w-full">
+          <div className="bg-white hover:-translate-y-2 hover: rounded-lg shadow-md p-4 flex flex-col h-full w-full">
             <div className="text-center">
               <img
                 src={product.image}
@@ -49,7 +51,7 @@ const Products = () => {
               />
             </div>
             <div className="mt-4">
-              <div className="h-16">
+              <div className="h-16 text-center mt5">
                 <h2
                   className="text-xl font-semibold overflow-hidden overflow-ellipsis truncate"
                   title={product.title}
@@ -57,18 +59,27 @@ const Products = () => {
                   {product.title}
                 </h2>
               </div>
-              <div className="h-8">
+              {/* <div className="h-8">
                 <p className="text-gray-600">${product.price}</p>
-              </div>
+              </div> */}
             </div>
-            <div className="mt-3">
+            {/* <div className="mt-3">
               <button
                 onClick={() => addToCart(product)}
-                className="bg-blue-500 text-white px-4 py-2 rounded-full"
+                className="bg-blue-500 text-white px-4 py-2 hover:bg-blue-400 rounded-full"
               >
                 Add To Cart
               </button>
-            </div>
+            </div> */}
+            <div className="flex-grow flex justify-between items-end">
+          <div className="text-green-600 py-2">${product.price}</div>
+          <button
+                onClick={() => addToCart(product)}
+                className="bg-blue-500 text-white px-4 py-2 hover:bg-blue-400 rounded-full"
+              >
+                Add To Cart <FontAwesomeIcon icon={faShoppingCart} />
+              </button>
+        </div>
           </div>
         </div>
       ));
